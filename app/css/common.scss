@@ -1,0 +1,44 @@
+@import "//at.alicdn.com/t/c/font_4459387_rztui6dwbzg.css";
+
+$baseWidth: 1200px;
+
+
+$baseBackground: #fff;
+$themeColor:#f66565;
+
+
+//初始化页面
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #f9f9f9;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between{
+  justify-content: space-between;
+}
+
+.flex-left{
+  justify-content: flex-start;
+}
+
+.flex-right{
+  justify-content: flex-end;
+}
+
+.flex-align{
+  align-items: center;
+}
