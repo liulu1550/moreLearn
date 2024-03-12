@@ -1,0 +1,52 @@
+@import "header";
+
+.body-container{
+  margin-top: 60px;
+  padding-top: 50px;
+  .login-container{
+    width: 340px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 6px;
+    padding: 30px 40px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,.1);
+    .header{
+      width: 100%;
+      a{
+        font-size: 20px;
+        //display: inline;
+        text-decoration: none;
+        color: #000;
+        &:nth-child(2){
+          margin-left: 20px;
+        }
+      }
+      .active{
+        color: $themeColor;
+      }
+    }
+    .input-group{
+      input{
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px 10px;
+        color: #999;
+        border: 1px solid #eee;
+        outline: none;
+        border-radius: 6px;
+        &:focus{
+          border: 1px solid $themeColor;
+        }
+      }
+      .login-btn, .register-btn{
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px 10px;
+        background: $themeColor;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+      }
+    }
+  }
+}

@@ -121,8 +121,8 @@ gulp.task('uglifyJs', function () {
         .pipe(plumber())
         .pipe(uglify({
             compress: {
-                drop_console: true,  // 过滤 console
-                drop_debugger: true  // 过滤 debugger
+                drop_console: false,  // 过滤 console
+                drop_debugger: false  // 过滤 debugger
             },
             warnings: false
         })) //加入uglify()的处理
