@@ -47,6 +47,29 @@
         text-align: center;
         border-radius: 6px;
       }
+
+      .get_sms_group{
+        .get_sms_btn{
+          margin-top: 20px;
+          width: 120px;
+          flex-shrink: 0;
+          border: 1px solid #e5e5e5;
+          padding: 12px 10px;
+          text-align: center;
+          font-size: 12px;
+          border-radius: 6px;
+          margin-left: 5px;
+          background-color: $themeColor;
+          color: #fff;
+          cursor: pointer;
+
+        }
+        .disable{
+          background-color: #999999;
+          color: #fff;
+          cursor: no-drop;
+        }
+      }
     }
   }
 }

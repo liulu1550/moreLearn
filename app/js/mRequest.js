@@ -1,36 +1,52 @@
-function MoreRequest(url, data, type, success, fail){
-    $.ajax({
-        "url":url,
-        "type":type,
-        "data":data,
-        "timeout":5000,
-        "beforeSend":function (xhr){},
-        "success": function (res){
-            if(res.code === 200){
-                if(success){
-                    console.log(res)
-                    success(res)
-                }
-            }else {
-                if(fail){
-                    fail(res)
-                }
-            }
-        },
-        "error":function (e){
-            if(fail){
-                fail(e)
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
         }
-    })
+    }
+    return cookieValue;
 }
 
-
-
-function _get(url, data, success){
-    MoreRequest(url, data, success)
-}
-
-function _post(url, data, success){
-    MoreRequest(url, data, success)
-}
+var moreRequest = {
+    'get': function (args) {
+        args['method'] = 'get';
+        this.ajax(args);
+    },
+    'post': function (args) {
+        args['method'] = 'post';
+        this._ajaxSetup();
+        this.ajax(args);
+    },
+    'ajax': function (args) {
+        var success = args['success'];
+        args['success'] = function (result) {
+            if(result['code'] === 200){
+                if(success){
+                    success(result);
+                }
+            }else{
+                console.log(result)
+            }
+        };
+        args['fail'] = function (error) {
+            console.log(error);
+        };
+        $.ajax(args);
+    },
+    '_ajaxSetup': function () {
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/.test(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                }
+            }
+        });
+    }
+};
